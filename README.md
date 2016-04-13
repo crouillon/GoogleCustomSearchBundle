@@ -1,6 +1,8 @@
 GoogleCustomSearchBundle
 =================
 
+[![Build Status](https://travis-ci.org/Lp-digital/GoogleCustomSearchBundle.svg?branch=master)](https://travis-ci.org/Lp-digital/GoogleCustomSearchBundle)
+
 **GoogleCustomSearchBundle** adds Google Custom Search feature in BackBee.
 
 ---
