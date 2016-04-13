@@ -1,0 +1,14 @@
+<div {{ this.bbcontent()|raw }}>
+    {% include 'Gcse/Partials/GcseScript.twig' %}
+    <gcse:searchbox
+        queryParameterName="{{ this.getObject().getParamValue('queryparametername') }}"
+        autoSearchOnLoad="{{ this.getObject().getParamValue('autosearchonload')[0] }}"
+        enableAutoComplete="{{ this.getObject().getParamValue('enableautocomplete')[0] }}"
+        resultsUrl="{{ this.getObject().getParamValue('resultsUrl')[0] }}"
+        ></gcse:searchbox>
+    <gcse:searchresults
+        resultSetSize="{{ this.getObject().getParamValue('resultsetsize') }}"
+        disableWebSearch="{{ this.getObject().getParamValue('disablewebsearch')[0] }}"
+        enableImageSearch="{{ this.getObject().getParamValue('enableimagesearch')[0] }}"
+        ></gcse:searchresults>
+</div>

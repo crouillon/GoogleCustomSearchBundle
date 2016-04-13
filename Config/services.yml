@@ -1,0 +1,4 @@
+services:
+    gcse.renderer.listener:
+      class: LpDigital\Bundle\GoogleCustomSearchBundle\Listener\GcseListener
+      arguments: ["@bundle.gcse"]

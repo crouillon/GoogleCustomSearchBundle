@@ -1,0 +1,34 @@
+{
+    "name": "lp-digital/gcse-bundle",
+    "description": "Add Google Custom Search feature in BackBee",
+    "keywords": ["backbee", "bundle", "google", "cse", "custumsearch"],
+    "type": "project",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Charles Rouillon",
+            "email": "charles.rouillon@lp-digital.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "backbee/backbee": "~1.1.0",
+        "backbee/utils": "~2.0",
+        "google/apiclient": "1.1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "LpDigital\\Bundle\\GoogleCustomSearchBundle\\": ""
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.4.2",
+        "mikey179/vfsStream": "~1.4.0"
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

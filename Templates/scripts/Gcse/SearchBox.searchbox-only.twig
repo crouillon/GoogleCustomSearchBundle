@@ -1,0 +1,9 @@
+<div {{ this.bbcontent()|raw }}>
+    {% include 'Gcse/Partials/GcseScript.twig' %}
+    <gcse:searchbox-only
+        queryParameterName="{{ this.getObject().getParamValue('queryparametername') }}"
+        autoSearchOnLoad="{{ this.getObject().getParamValue('autosearchonload')[0] }}"
+        enableAutoComplete="{{ this.getObject().getParamValue('enableautocomplete')[0] }}"
+        resultsUrl="{{ this.getObject().getParamValue('resultsurl')[0]['url'] }}"
+        ></gcse:searchbox-only>
+</div>

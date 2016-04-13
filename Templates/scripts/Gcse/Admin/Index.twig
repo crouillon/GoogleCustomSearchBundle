@@ -1,0 +1,191 @@
+<div class="bb-bundle-content bundle-{{ gcse.getId() }}">
+    <div class="alert alert-warning" role="alert">The Google Custom Search bundle need you, at first, to <a href="https://developers.google.com/custom-search/docs/tutorial/creatingcse" target="_blank">create an instance of a Custom Search Engine</a>.</div>
+    <form {{ this.bundleAdminForm('gcse.admin.save')|raw }} class="clearfix">
+        <fieldset>
+            <legend class="gcse-api" data-link="{{ this.bundleAdminUrl('gcse.admin.test')|raw }}">Google API credentials <i class="fa fa-refresh"></i></legend>
+            <div class="form-group">
+                <label for="cx" class="label">Custom Search engine ID</label>
+                <div class="">
+                    <input type="text" class="form-control form-control-success btn-radius" id="cx" name="cx" value="{{ gcse.getDefaultParameter('cx') }}" />
+                    <small class="text-muted">Your Custom Search engine ID can be created using the <a href="http://cse.google.com/manage/all" target="_blank">Control Panel</a>.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="developer_key" class="label">Developer key</label>
+                <div>
+                    <input type="text" class="form-control btn-radius" id="developer_key" name="developer_key" value="{{ gcse.getDeveloperKey() }}" />
+                    <small class="text-muted">The API developer key for authentication, can be created on the  <a href="https://console.developers.google.com/" target="_blank">Developer Console</a>.</small>
+                </div>
+            </div>
+        </fieldset>
+        <br/>
+        <fieldset>
+            <legend>General parameters</legend>
+            <div class="form-group">
+                <label for="queryParameterName" class="label">Query parameter name</label>
+                <div>
+                    <input type="text" class="form-control btn-radius" id="queryParameterName" name="queryParameterName" value="{{ gcse.getDefaultParameter('queryParameterName') }}" />
+                    <small class="text-muted">For example, <strong>q</strong> (default) or <strong>query</strong>. This will be embedded in the URL.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="resultSetSize" class="label">Max results set number</label>
+                <div>
+                    <input type="text" class="form-control btn-radius" id="resultSetSize" name="resultSetSize" value="{{ gcse.getDefaultParameter('resultSetSize') }}" />
+                    <small class="text-muted">For example <strong>large</strong>, <strong>small</strong>, <strong>filtered_cse</strong>, <strong>10</strong>. The default depends on the layout and whether the CSE is configured to search the whole web or only specified sites.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="resultsUrl" class="label">URL of the results page</label>
+                <div>
+                    <input type="text" class="form-control btn-radius" id="resultsUrl" name="resultsUrl" value="{{ gcse.getDefaultParameter('resultsUrl') }}" />
+                    <small class="text-muted">Default is the Google-hosted page.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="autoSearchOnLoad" name="autoSearchOnLoad" value="true" {% if (gcse.getDefaultParameter('autoSearchOnLoad')) %} checked{% endif %} /> Search on load
+                        </label>
+                        <br/>
+                        <small class="text-muted">Specifies whether to execute a search by the query embedded in the URL of the page that's loading.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="enableAutoComplete" name="enableAutoComplete" value="true" {% if (gcse.getDefaultParameter('enableAutoComplete')) %} checked{% endif %} /> Enable autocomplete
+                        </label>
+                        <br/>
+                        <small class="text-muted">Only available if autocomplete has been enabled in the Custom Search control panel.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="disableWebSearch" name="disableWebSearch" value="true" {% if (gcse.getDefaultParameter('disableWebSearch')) %} checked{% endif %} /> Disable web search
+                        </label>
+                        <br/>
+                        <small class="text-muted">If true, disables web search. Usually used only if image search has been enabled in the Custom Search control panel.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="enableImageSearch" name="enableImageSearch" value="true" {% if (gcse.getDefaultParameter('enableImageSearch')) %} checked{% endif %} /> Enable image search
+                        </label>
+                        <br/>
+                        <small class="text-muted">Available only if image search has been enabled in the Custom Search control panel. If true, enables image search. Image results will be shown on a separate tab.</small>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-radius btn-default">Save</button>
+    </form>
+    <script type="text/javascript">
+        (function () {
+            'use strict';
+
+            var Core = require('Core'),
+                    jQuery = require('jquery'),
+                    bundle = jQuery('div.bundle-{{ gcse.getId() }}'),
+                    onLoading = function (target) {
+                        target.parent()
+                                .find('div.form-group')
+                                .removeClass('has-success')
+                                .removeClass('has-warning')
+                                .find('input')
+                                .removeClass('form-control-success');
+
+                        target.find('i').attr('class', 'fa fa-refresh fa-spin');
+                    },
+                    onSuccess = function (target) {
+                        target.parent()
+                                .find('div.form-group')
+                                .addClass('has-success')
+                                .removeClass('has-warning')
+                                .find('input')
+                                .addClass('form-control-success')
+                                .removeClass('form-control-warning');
+
+                        target.find('i').attr('class', 'fa fa-check alert-success');
+                    },
+                    onError = function (target, message) {
+                        target.parent()
+                                .find('div.form-group')
+                                .removeClass('has-success')
+                                .find('input')
+                                .removeClass('form-control-success');
+                        
+                        if ('keyInvalid' === message) {
+                            target.parent()
+                                    .find('input[name=developer_key]')
+                                    .parent()
+                                    .parent()
+                                    .addClass('has-warning');
+                        } else if ('invalid' === message) {
+                            target.parent()
+                                    .find('input[name=cx]')
+                                    .parent()
+                                    .parent()
+                                    .addClass('has-warning');
+                        } else {
+                            target.parent()
+                                    .find('div.form-group')
+                                    .addClass('has-warning');
+                        }
+
+                        target.find('i').attr('class', 'fa fa-times alert-danger');
+                    },
+                    testCredentials = function () {
+                        var target = bundle.find('legend.gcse-api'),
+                            link = target.attr('data-link'),
+                            params = {
+                                cx: bundle.find('#cx').val(),
+                                developer_key: bundle.find('#developer_key').val()
+                            };
+
+                        onLoading(target);
+                        handler['update'](link, params).then(
+                                function (response) {
+                                    if ('ok' === response.content) {
+                                        onSuccess(target);
+                                    } else {
+                                        onError(target, response.content);
+                                    }
+                                },
+                                function (reason) {
+                                    reason = JSON.parse(reason);
+                                    Core.exception.silent(
+                                            reason.error.name,
+                                            reason.error.message,
+                                            reason.error.code,
+                                            {
+                                                phpStack: reason.error.php_stack
+                                            }
+                                    );
+                                    onError(target, reason.error.message);
+                                }
+                        );
+
+                        console.log('test');
+                    },
+                    handler = require('Core/DriverHandler');
+
+            handler.addDriver('rest', require('Core/RestDriver'));
+
+            bundle.find('input[name=developer_key]').off('change').on('change', testCredentials);
+            bundle.find('input[name=cx]').off('change').on('change', testCredentials);
+            bundle.find('legend.gcse-api').off('click').on('click', testCredentials);
+
+            testCredentials();
+        }());
+    </script>
+</div>

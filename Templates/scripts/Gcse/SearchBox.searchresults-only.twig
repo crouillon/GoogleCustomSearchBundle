@@ -1,0 +1,8 @@
+<div {{ this.bbcontent()|raw }}>
+    {% include 'Gcse/Partials/GcseScript.twig' %}
+    <gcse:searchresults-only
+        resultSetSize="{{ this.getObject().getParamValue('resultsetsize') }}"
+        disableWebSearch="{{ this.getObject().getParamValue('disablewebsearch')[0] }}"
+        enableImageSearch="{{ this.getObject().getParamValue('enableimagesearch')[0] }}"
+        ></gcse:searchresults-only>
+</div>

@@ -1,0 +1,11 @@
+gcse.searchbox.prepersist:
+    listeners:
+        - [@gcse.renderer.listener, onPrepersistSearchBox]
+
+gcse.searchbox.prerender:
+    listeners:
+        - [@gcse.renderer.listener, onPrerenderSearchBox]
+
+gcse.searchboxapi.render:
+    listeners:
+        - [@gcse.renderer.listener, onRenderSearchBoxApi]

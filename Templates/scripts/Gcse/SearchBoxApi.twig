@@ -1,0 +1,41 @@
+<div {{ this.bbcontent()|raw }}>
+    <form role="form" class="row">
+        <div class="form-group">
+            <label>Search</label>
+            <input type="text" name="{{ gcse.getParameter('queryparametername', this.getObject()) }}" value="{{ query }}" />
+        </div>
+        <button type="submit" class="btn btn-default">OK</button>
+    </form>
+    {% if results %}
+        <h2>{{ results.getSearchInformation().getTotalResults() }} results found for "{{ query }}"</h2>
+        <div>
+        {% for item in results.getItems() %}
+            <p>
+                {% if item.getPagemap()['cse_thumbnail'] %}
+                    <img src="{{ item.getPagemap()['cse_thumbnail'][0]['src'] }}"
+                         width="50px"
+                         align="left" />
+                {% endif %}
+                <a href="{{ item.getLink() }}">{{ item.getHtmlTitle()|raw }}</a>
+                <br />
+                {{ item.getHtmlSnippet()|raw }}
+            </p>
+        {% endfor %}
+        {% block pagination %}
+            {% set maxPages = 10 %}
+            {% set numPages = results.getSearchInformation().getTotalResults()/parameters.num|round(0, 'ceil') %}
+            {% if numPages > 1 %}
+            <nav>
+                <ul class="pagination">
+                    <li{% if 1 == parameters.start %} class="disabled"{% endif %}><a href="?{{ gcse.getParameter('queryparametername', this.getObject()) }}={{ query }}&start={{ parameters.start - parameters.num }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    {% for i in 0..min(maxPages - 1, numPages) %}
+                    <li{% if 1 + (i * parameters.num) == parameters.start %} class="active"{% endif %}><a href="?{{ gcse.getParameter('queryparametername', this.getObject()) }}={{ query }}&start={{ 1 + (i * parameters.num) }}">{{ i + 1 }}</a></li>
+                    {% endfor %}
+                    <li{% if i == min(maxPages - 1, numPages) %} class="disabled"{% endif %}><a href="?{{ gcse.getParameter('queryparametername', this.getObject()) }}={{ query }}&start={{ parameters.start + parameters.num }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                </ul>
+            </nav>
+            {% endif %}
+        {% endblock %}
+        </div>
+    {% endif %}
+</div>

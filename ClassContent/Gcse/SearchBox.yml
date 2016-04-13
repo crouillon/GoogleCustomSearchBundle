@@ -1,0 +1,47 @@
+SearchBox:
+    properties:
+        name: Search box
+        description: The Google custom search box
+        category: [GCSE]
+    parameters:
+        renderMode:
+            type: select
+            label: Layout
+            options: []
+            value: []
+        queryParameterName:
+            type: text
+            label: Query parameter name
+            value: q
+        resultsUrl:
+            type: linkSelector
+            label: URL of the results page
+            value: []
+        resultSetSize:
+            type: text
+            label: Size of the results set
+            value: large
+        autoSearchOnLoad:
+            type: checkbox
+            label: Auto search on load
+            options:
+                'true': Enabled
+            value: ['true']
+        enableAutoComplete:
+            type: checkbox
+            label: Query autocomplete
+            options:
+                'true': Enabled
+            value: ['true']
+        disableWebSearch:
+            type: checkbox
+            label: Web search panel
+            options:
+                'true': Disabled
+            value: []
+        enableImageSearch:
+            type: checkbox
+            label: Image search panel
+            options:
+                'true': Enabled
+            value: []

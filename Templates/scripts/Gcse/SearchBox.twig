@@ -1,0 +1,12 @@
+<div {{ this.bbcontent()|raw }}>
+    {% include 'Gcse/Partials/GcseScript.twig' %}
+    <gcse:search
+        queryParameterName="{{ gcse.getParameter('queryparametername', this.getObject()) }}"
+        resultSetSize="{{ gcse.getParameter('resultsetsize', this.getObject()) }}"
+        autoSearchOnLoad="{{ gcse.getParameter('autosearchonload', this.getObject()) }}"
+        enableAutoComplete="{{ gcse.getParameter('enableautocomplete', this.getObject()) }}"
+        resultsUrl="{{ gcse.getParameter('resultsUrl', this.getObject()) }}"
+        disableWebSearch="{{ gcse.getParameter('disablewebsearch', this.getObject()) }}"
+        enableImageSearch="{{ gcse.getParameter('enableimagesearch', this.getObject()) }}"
+        ></gcse:search>
+</div>

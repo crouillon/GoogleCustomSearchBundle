@@ -1,0 +1,7 @@
+SearchBoxApi:
+    extends: \BackBee\ClassContent\Gcse\SearchBox
+    properties:
+        name: Search throw Google API
+        description: A fully templating search and results throw the Google API
+        category: [GCSE]
+        cache-lifetime: -60
