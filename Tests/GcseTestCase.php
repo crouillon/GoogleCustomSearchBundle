@@ -52,7 +52,7 @@ class GcseTestCase extends \PHPUnit_Framework_TestCase
             'ClassContent' => [],
             'Config' => [
                 'bootstrap.yml' => file_get_contents(__DIR__ . '/Config/bootstrap.yml'),
-                'bundles.yml' => file_get_contents(__DIR__ . './Config/bundles.yml'),
+                'bundles.yml' => file_get_contents(__DIR__ . '/Config/bundles.yml'),
                 'config.yml' => file_get_contents(__DIR__ . '/Config/config.yml'),
                 'doctrine.yml' => file_get_contents(__DIR__ . '/Config/doctrine.yml'),
                 'logging.yml' => file_get_contents(__DIR__ . '/Config/logging.yml'),
