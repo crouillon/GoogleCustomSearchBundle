@@ -1,5 +1,9 @@
 <script>
     (function () {
+        if (window.google) {
+            delete window.google;
+        }
+
         var cx = '{{ gcse.getParameter('cx', this.getObject()) }}';
         var gcse = document.createElement('script');
         gcse.type = 'text/javascript';
