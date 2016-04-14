@@ -1,7 +1,7 @@
 {
     "name": "lp-digital/gcse-bundle",
     "description": "Add Google Custom Search feature in BackBee",
-    "keywords": ["backbee", "bundle", "google", "cse", "custumsearch"],
+    "keywords": ["backbee", "bundle", "google", "cse", "customsearch"],
     "type": "project",
     "license": "GPL-3.0+",
     "authors": [
