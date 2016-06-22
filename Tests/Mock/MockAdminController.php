@@ -26,7 +26,7 @@ use LpDigital\Bundle\GoogleCustomSearchBundle\Controller\AdminController;
 /**
  * Mock AdminController for test suite.
  *
- * @author c.rouillon
+ * @author Charles Rouillon <charles.rouillon@lp-digital.fr>
  */
 class MockAdminController extends AdminController
 {

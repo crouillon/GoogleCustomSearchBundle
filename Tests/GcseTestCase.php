@@ -33,7 +33,7 @@ use LpDigital\Bundle\GoogleCustomSearchBundle\GoogleCustomSearch;
 /**
  * Test case for GoogleCustomSearch bundle.
  *
- * @author Charles Rouillon <charles.rouilon@lp-digital.fr>
+ * @author Charles Rouillon <charles.rouillon@lp-digital.fr>
  */
 class GcseTestCase extends \PHPUnit_Framework_TestCase
 {

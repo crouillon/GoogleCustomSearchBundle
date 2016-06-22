@@ -27,7 +27,7 @@ use LpDigital\Bundle\GoogleCustomSearchBundle\Tests\Mock\MockAdminController;
 /**
  * Tests suite for LpDigital\Bundle\GoogleCustomSearchBundle\Controller\AdminController.
  *
- * @author Charles Rouillon <charles.rouilon@lp-digital.fr>
+ * @author Charles Rouillon <charles.rouillon@lp-digital.fr>
  * @covers LpDigital\Bundle\GoogleCustomSearchBundle\Controller\AdminController
  */
 class AdminControllerTest extends GcseTestCase

@@ -33,7 +33,7 @@ use LpDigital\Bundle\GoogleCustomSearchBundle\GoogleCustomSearch;
 /**
  * Event listener for the Google custom search bundle.
  *
- * @author Charles Rouillon <charles.rouilon@lp-digital.fr>
+ * @author Charles Rouillon <charles.rouillon@lp-digital.fr>
  */
 class GcseListener implements EventSubscriberInterface
 {

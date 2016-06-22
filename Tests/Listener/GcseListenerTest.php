@@ -31,7 +31,7 @@ use LpDigital\Bundle\GoogleCustomSearchBundle\Tests\GcseTestCase;
 /**
  * Tests suite for LpDigital\Bundle\GoogleCustomSearchBundle\Listener\GcseListener.
  *
- * @author Charles Rouillon <charles.rouilon@lp-digital.fr>
+ * @author Charles Rouillon <charles.rouillon@lp-digital.fr>
  * @covers LpDigital\Bundle\GoogleCustomSearchBundle\Listener\GcseListener
  */
 class GcseListenerTest extends GcseTestCase

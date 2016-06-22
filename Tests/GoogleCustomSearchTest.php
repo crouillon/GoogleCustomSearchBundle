@@ -26,7 +26,7 @@ use BackBee\ClassContent\Gcse\SearchBox;
 /**
  * Tests suite for LpDigital\Bundle\GoogleCustomSearchBundle\GoogleCustomSearch.
  *
- * @author Charles Rouillon <charles.rouilon@lp-digital.fr>
+ * @author Charles Rouillon <charles.rouillon@lp-digital.fr>
  * @covers LpDigital\Bundle\GoogleCustomSearchBundle\GoogleCustomSearch
  */
 class GoogleCustomSearchTest extends GcseTestCase
