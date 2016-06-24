@@ -22,7 +22,6 @@ before_install:
   - if [ "$TRAVIS_BRANCH" = "master" ]; then export COMPOSER_ROOT_VERSION=dev-master; else export COMPOSER_ROOT_VERSION="$TRAVIS_BRANCH".x-dev; fi;
  
 before_script:
-  - phpenv config-rm xdebug.ini
   - composer install --no-interaction --prefer-source
 
 script:
@@ -33,7 +32,3 @@ after_script:
 
 notifications:
     email: false
-
-addons:
-    code_climate:
-        repo_token: 934446de89ed52db79626581e06aa4d18864a1d16c974be2787b7e22d12a9087
