@@ -12,9 +12,9 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "backbee/backbee": "~1.1.1",
+        "backbee/backbee-php": "~1.2.0",
         "backbee/utils": "~2.0",
-        "google/apiclient": "1.1.7"
+        "google/apiclient": "1.1.8"
     },
     "autoload": {
         "psr-4": {
